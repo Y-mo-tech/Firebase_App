@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
-import {auth} from './firebase'
+import { auth, createUserWithEmailAndPassword } from './firebase';
+//import {auth} from './firebase'
 
 function Signup() {
     const [email, setEmail] = useState('')
@@ -9,7 +10,7 @@ function Signup() {
         e.preventDefault();
 
         try{
-            await auth.createUserWithEmailAndPassword(email, password)
+            await createUserWithEmailAndPassword(auth, email, password)
             alert('Account created!')
         } catch(err){
             alert(err.message)
@@ -17,6 +18,8 @@ function Signup() {
     }
 
     return(
+        <div>
+        <h1>Signup Page</h1>
         <form onSubmit={handleSignup}>
             <input 
                type="email"
@@ -32,6 +35,7 @@ function Signup() {
             />
             <button type="submit">Sign Up</button>
         </form>
+        </div>
     )
 }
 

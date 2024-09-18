@@ -11,9 +11,9 @@ function App() {
     <Router>
       <div>
         <Routes>
-          <Route path='/signup' element={<Signup/>} />
-          <Route path='/login' element={<Login/>} />
-          <Route path='/search' element={<GifSearch/>} />
+          <Route exact path='/signup' element={<Signup/>} />
+          <Route exact path='/login' element={<Login/>} />
+          <Route exact path='/search' element={<GifSearch/>} />
         </Routes>
       </div>
     </Router>

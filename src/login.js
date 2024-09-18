@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
-import {auth} from './firebase'
+import { auth, signInWithEmailAndPassword  } from './firebase';
+//import {auth} from './firebase'
 
 function Login() {
     const [email, setEmail] = useState('')
@@ -9,7 +10,7 @@ function Login() {
         e.preventDefault();
 
         try{
-            await auth.signInWithEmailAndPassword(email, password)
+            await signInWithEmailAndPassword(auth, email, password)
             alert('Logged In!')
         } catch(err){
             alert(err.message)
@@ -17,6 +18,8 @@ function Login() {
     }
 
     return(
+        <div>
+        <h1>Login page</h1>
         <form onSubmit={handleLogin}>
             <input 
                type="email"
@@ -30,8 +33,9 @@ function Login() {
                onChange={(e)=>setPassword(e.target.value)}
                placeholder='Password'
             />
-            <button type="submit">Sign Up</button>
+            <button type="submit">Login</button>
         </form>
+        </div>
     )
 
 }
